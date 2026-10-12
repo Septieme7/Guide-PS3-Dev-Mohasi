@@ -1,0 +1,22 @@
+{
+  "name": "Guide PS3 — Outils PS3 Dev",
+  "short_name": "PS3 Dev Tools",
+  "description": "Guide complet des outils homebrew PS3 de mohasi",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#070b14",
+  "theme_color": "#0070d1",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "assets/icon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

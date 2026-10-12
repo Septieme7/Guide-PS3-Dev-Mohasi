@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0e1a">
+  <title>PS3 Guide — mohasi's PS3 Dev Tools</title>
+  <meta name="description" content="Complete guide to mohasi's PS3 homebrew tools: Cell Stream, File Manager, Yo! Player, Thermal Bench, Theme Studio, RCO Studio, Swarm, and more.">
+  <meta name="author" content="PS3 Revival Community">
+
+  <link rel="manifest" href="../../site.manifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="PS3 Dev Tools">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PS3 Guide — mohasi's PS3 Dev Tools">
+  <meta property="og:description" content="Complete guide to mohasi's PS3 homebrew tools.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_FR">
+
+  <link rel="alternate" hreflang="fr" href="../../index.html">
+  <link rel="alternate" hreflang="en" href="./en.html">
+
+  <link rel="icon" type="image/x-icon" href="../icon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../icon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../icon/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../icon/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../icon/android-chrome-512x512.png">
+
+  <link rel="stylesheet" href="../style/style.css">
+</head>
+<body id="top">
+
+  <img src="../image/me7.png" alt="" aria-hidden="true" id="bouncingImage" class="bouncing-image">
+
+  <div class="bg-layer" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb--1"></div>
+    <div class="bg-orb bg-orb--2"></div>
+    <div class="bg-orb bg-orb--3"></div>
+  </div>
+
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a href="#top" class="brand" aria-label="Back to top">
+        <span class="brand-badge">PS3</span>
+        <span class="brand-text">PS3 Dev<span class="brand-dot">.</span>Tools</span>
+      </a>
+
+      <div class="header-actions">
+        <span class="status-pill" title="Status indicator">
+          <span class="status-dot"></span> Guide active
+        </span>
+
+        <div class="lang-switch" role="group" aria-label="Language / Langue">
+          <a href="../../index.html" class="lang-btn" aria-label="Français" hreflang="fr">FR</a>
+          <span class="lang-btn is-active" aria-current="page" aria-label="English">EN</span>
+        </div>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false">
+          <span class="theme-toggle__track">
+            <span class="theme-toggle__thumb">
+              <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+              <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <nav class="sidebar-inner">
+      <p class="sidebar-label">Contents</p>
+      <ul class="nav-list">
+        <li><a href="#intro" class="nav-link"><span class="nav-bullet"></span>Introduction</a></li>
+        <li><a href="#prerequis" class="nav-link"><span class="nav-bullet"></span>Prerequisites</a></li>
+        <li><a href="#installation" class="nav-link"><span class="nav-bullet"></span>Installation</a></li>
+        <li><a href="#apps-principales" class="nav-link"><span class="nav-bullet"></span>Main Apps</a></li>
+        <li><a href="#plugins" class="nav-link"><span class="nav-bullet"></span>Plugins</a></li>
+        <li><a href="#outils-pc" class="nav-link"><span class="nav-bullet"></span>PC Tools</a></li>
+        <li><a href="#depannage" class="nav-link"><span class="nav-bullet"></span>Troubleshooting</a></li>
+        <li><a href="#ressources" class="nav-link"><span class="nav-bullet"></span>Resources</a></li>
+      </ul>
+      <div class="sidebar-foot">
+        <span class="sidebar-foot__label">Tip</span>
+        <p>Click any <code>path</code> to copy it.</p>
+      </div>
+    </nav>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+
+  <main class="content" id="content">
+
+    <!-- INTRO -->
+    <section id="intro" class="section">
+      <header class="section-head">
+        <span class="section-tag">01</span>
+        <h1 class="section-title">Complete Guide: mohasi's PS3 Dev Tools</h1>
+      </header>
+      <div class="section-body">
+        <p>This guide presents all the PS3 homebrew tools developed by <strong>mohasi</strong>, available on the GitHub repository <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">mohasi/ps3-dev</a>. These applications cover PC streaming, file management, downloading, thermal monitoring, customization, and much more.</p>
+
+        <div class="callout callout--info">
+          <div class="callout__icon">ℹ️</div>
+          <div class="callout__content">
+            <p><strong>Important</strong>: All these tools are <strong>free and open-source</strong> homebrews, designed to work on PS3 <strong>CFW</strong> and <strong>HEN</strong>. Some tools are PS3 applications (<code>.pkg</code>), others are plugins to inject into the XMB.</p>
+          </div>
+        </div>
+
+        <div class="callout callout--accent">
+          <div class="callout__icon">🔄</div>
+          <div class="callout__content">
+            <p><strong>Update</strong>: The repository is actively maintained. Releases are identified by a version number (e.g., <code>191-3541f8d</code>). Check the <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">releases page</a> regularly for the latest versions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREREQUIS -->
+    <section id="prerequis" class="section">
+      <header class="section-head">
+        <span class="section-tag">02</span>
+        <h2 class="section-title">Essential Prerequisites</h2>
+      </header>
+      <div class="section-body">
+        <p>Before installing these tools, make sure you have:</p>
+        <ul class="checklist">
+          <li>A modified PS3: <strong>CFW (Evilnat, Rebug, etc.)</strong> or <strong>PS3HEN enabled</strong>.</li>
+          <li>A Windows PC (for PC tools like Theme Studio and RCO Studio).</li>
+          <li>A network connection between the PC and PS3 (for FTP and streaming).</li>
+          <li>A USB drive formatted in <strong>FAT32</strong> (for transferring PKGs).</li>
+        </ul>
+
+        <div class="callout callout--warn">
+          <div class="callout__icon">⚠️</div>
+          <div class="callout__content">
+            <p><strong>HEN Reminder</strong>: On PS3HEN, you must <strong>enable HEN</strong> before each session. Without it, homebrews will not launch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALLATION -->
+    <section id="installation" class="section">
+      <header class="section-head">
+        <span class="section-tag">03</span>
+        <h2 class="section-title">Installing the Tools</h2>
+      </header>
+      <div class="section-body">
+        <p>All PS3 applications from mohasi are distributed as <code>.pkg</code> files. Installation is the same as any PKG.</p>
+
+        <h3 class="sub-title">Method 1: Via USB Drive</h3>
+        <ol class="steps">
+          <li>Download the <code>.pkg</code> file from the <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">releases page</a>.</li>
+          <li>Copy the <code>.pkg</code> file into a folder named <code>PKG</code> at the root of your USB drive.</li>
+          <li>Insert the USB drive into the PS3.</li>
+          <li>On the XMB, go to <strong>Game &gt; Package Manager &gt; Install Package Files</strong>.</li>
+          <li>Select <strong>USB Storage Device</strong>, then the <code>.pkg</code> file.</li>
+          <li>Press <strong>X</strong> to install.</li>
+        </ol>
+
+        <h3 class="sub-title">Method 2: Via FTP</h3>
+        <ol class="steps">
+          <li>Connect to your PS3 via FileZilla (see the FTP section in related guides).</li>
+          <li>Transfer the <code>.pkg</code> file to <code>/dev_hdd0/packages/</code>.</li>
+          <li>On the XMB, go to <strong>Game &gt; Package Manager &gt; Install Package Files</strong>.</li>
+          <li>Select <strong>System Storage</strong>, then the <code>.pkg</code> file.</li>
+        </ol>
+
+        <div class="callout callout--tip">
+          <div class="callout__icon">💡</div>
+          <div class="callout__content">
+            <p><strong>Tip</strong>: Some tools, like <strong>Simple Disc Mount</strong> and <strong>Simple Cheat Menu</strong>, are <strong>plugins</strong>. They require additional configuration (injection into <code>boot_plugins.txt</code> or launching via webMAN). Check each tool's README for details.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPS PRINCIPALES -->
+    <section id="apps-principales" class="section">
+      <header class="section-head">
+        <span class="section-tag">04</span>
+        <h2 class="section-title">Main Applications</h2>
+      </header>
+      <div class="section-body">
+
+        <h3 class="sub-title">🎮 Cell Stream — PC to PS3 Streaming</h3>
+        <p><strong>Cell Stream</strong> streams your Windows PC's screen and sound to the PS3 in real time, and turns the PS3 controller into an input device for the PC. Ideal for playing your PC games from the couch.</p>
+        <ul class="checklist">
+          <li><strong>Low latency</strong>: about 25 ms at 720p60 over Wi-Fi.</li>
+          <li><strong>Xbox Cloud mode</strong>: launch Xbox Cloud games directly from the PS3.</li>
+          <li><strong>PS3 controller</strong>: works as an Xbox pad, with analog triggers (L2/R2).</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">Cell Stream — Releases</a></p>
+
+        <h3 class="sub-title">📁 File Manager — File Browser</h3>
+        <p><strong>File Manager</strong> is a modern file browser for PS3, with a flat, themeable UI. It allows you to navigate PS3 partitions, copy, move, rename, and delete files.</p>
+        <ul class="checklist">
+          <li><strong>ISO mounting</strong>: press X on an <code>.iso</code> file to mount it as a Blu-ray disc.</li>
+          <li><strong>Google Drive</strong>: Google Drive appears as a folder, with download, upload, rename, and delete options.</li>
+          <li><strong>Disc dump</strong>: sector-by-sector dump to <code>/dev_hdd0/dumps</code>.</li>
+          <li><strong>Properties panel</strong>: shows name, type, size, permissions, SHA-1, etc.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">File Manager — Releases</a></p>
+
+        <h3 class="sub-title">🎥 Yo! Player — Native YouTube Client</h3>
+        <p><strong>Yo! Player</strong> is a native YouTube client for PS3. It allows you to browse feeds, search videos, open channels, and play up to 1080p with sound — all without PSN and without ads.</p>
+        <ul class="checklist">
+          <li><strong>No PSN</strong>: no PlayStation Network connection required.</li>
+          <li><strong>No ads</strong>: direct video playback.</li>
+          <li><strong>1080p</strong>: maximum supported quality.</li>
+          <li><strong>Downloads</strong>: downloaded videos are saved as MP4 in the XMB's Video column.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">Yo! Player — Releases</a></p>
+
+        <h3 class="sub-title">🌡️ Thermal Bench — Thermal Test Tool</h3>
+        <p><strong>Thermal Bench</strong> is a thermal test tool that tells you if your PS3 runs too hot, and whether a repaste, fan change, or overclock made a difference.</p>
+        <ul class="checklist">
+          <li><strong>Live readouts</strong>: CPU/GPU temperatures, fan speed, RSX clocks.</li>
+          <li><strong>Graph</strong>: history of the last 2 to 30 minutes.</li>
+          <li><strong>4 load steps</strong>: from off to full burn (CPU, SPU, GPU).</li>
+          <li><strong>Saves</strong>: each test is saved to <code>/dev_hdd0/tmp/thermal-bench/</code>.</li>
+          <li><strong>Live overclocking</strong>: change RSX clocks without rebooting.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">Thermal Bench — Releases</a></p>
+
+        <h3 class="sub-title">🧲 Swarm — Torrent Client with VPN</h3>
+        <p><strong>Swarm</strong> is a torrent client for PS3 that lets you search and download torrents directly to the console's hard drive, with no PC involved. It supports a VPN.</p>
+        <ul class="checklist">
+          <li><strong>Built-in search</strong>: Torrents-CSV and The Pirate Bay configured by default.</li>
+          <li><strong>WireGuard VPN</strong>: copy your <code>.conf</code> file to <code>/dev_hdd0/tmp/swarm/wireguard.conf</code>.</li>
+          <li><strong>Kill switch</strong>: blocks all network traffic if the VPN is down.</li>
+          <li><strong>Resilient download</strong>: automatically resumes where it left off.</li>
+          <li><strong>Privacy</strong>: the log never names what you downloaded.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">Swarm — Releases</a></p>
+
+        <h3 class="sub-title">🎨 Ren'Py Player — Visual Novel Player</h3>
+        <p><strong>Ren'Py Player</strong> is a visual novel player for PS3. It plays <code>.rpk</code> files generated from PC Ren'Py games.</p>
+        <ul class="checklist">
+          <li><strong>Format</strong>: <code>.rpk</code> files to be placed in <code>/dev_hdd0/renpy</code>.</li>
+          <li><strong>Conversion</strong>: use the <code>renpy-to-ps3.exe</code> tool on PC to create <code>.rpk</code> files.</li>
+          <li><strong>Compatibility</strong>: works on PS3 and RPCS3.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">Ren'Py Player — Releases</a></p>
+      </div>
+    </section>
+
+    <!-- PLUGINS -->
+    <section id="plugins" class="section">
+      <header class="section-head">
+        <span class="section-tag">05</span>
+        <h2 class="section-title">Plugins</h2>
+      </header>
+      <div class="section-body">
+
+        <h3 class="sub-title">💿 Simple Disc Mount — ISO Mounting</h3>
+        <p><strong>Simple Disc Mount</strong> is a VSH plugin that adds a "Mount Disc Image" submenu to the XMB Games column. It lists all <code>.iso</code> files in <code>/dev_hdd0/PS3ISO</code> and allows mounting them as Blu-ray discs.</p>
+        <ul class="checklist">
+          <li><strong>Quick access</strong>: mount your ISOs directly from the XMB.</li>
+          <li><strong>Disc insertion</strong>: inserting a real disc automatically unmounts the mounted ISO.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">Simple Disc Mount — Releases</a></p>
+
+        <h3 class="sub-title">📡 Simple FTP — Anonymous FTP Server</h3>
+        <p><strong>Simple FTP</strong> is a plugin that provides an anonymous FTP server on port 21. It allows transferring files to and from the PS3 via FTP.</p>
+        <ul class="checklist">
+          <li><strong>Anonymous</strong>: no authentication required.</li>
+          <li><strong>Binary only</strong>: binary transfers to avoid corruption.</li>
+          <li><strong>Built-in</strong>: included in File Manager.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">Simple FTP — Releases</a></p>
+
+        <h3 class="sub-title">🎵 Simple CD Info — Audio CD Info</h3>
+        <p><strong>Simple CD Info</strong> is a plugin that restores track, album, and artist names for audio CDs in the XMB. It queries the gnudb database.</p>
+        <ul class="checklist">
+          <li><strong>Automatic lookup</strong>: no configuration required.</li>
+          <li><strong>Genre and disc number</strong>: correctly fills metadata.</li>
+          <li><strong>HEN and CFW compatible</strong>.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">Simple CD Info — Releases</a></p>
+
+        <h3 class="sub-title">🎮 Simple Cheat Menu — In-Game Cheat Menu</h3>
+        <p><strong>Simple Cheat Menu</strong> is a plugin that adds an in-game cheat menu. Briefly press the PS button during any game to open the menu and toggle cheats live.</p>
+        <ul class="checklist">
+          <li><strong>No PC</strong>: nothing to configure per game.</li>
+          <li><strong>Artemis database</strong>: cheats are pulled from the Artemis database.</li>
+          <li><strong>Patches tab</strong>: replace textures in-game (with Patch Studio).</li>
+          <li><strong>Stats counter</strong>: displays framerate, clocks, and temperatures.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">Simple Cheat Menu — Releases</a></p>
+
+        <h3 class="sub-title">🔗 Simple Debug Bridge — Remote Debugging</h3>
+        <p><strong>Simple Debug Bridge</strong> is a plugin that allows remote debugging and control of the PS3 over TCP (port 8785). It comes with a Windows client (<code>debug-bridge-client.exe</code>).</p>
+        <ul class="checklist">
+          <li><strong>Remote control</strong>: press buttons, launch and quit titles.</li>
+          <li><strong>Local HTTP proxy</strong>: <code>http://localhost:8786</code> for deployment tools.</li>
+          <li><strong>Logs</strong>: view console logs.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">Simple Debug Bridge — Releases</a></p>
+      </div>
+    </section>
+
+    <!-- OUTILS PC -->
+    <section id="outils-pc" class="section">
+      <header class="section-head">
+        <span class="section-tag">06</span>
+        <h2 class="section-title">PC Tools (Windows)</h2>
+      </header>
+      <div class="section-body">
+
+        <h3 class="sub-title">🎨 Theme Studio — PS3 Theme Editor</h3>
+        <p><strong>Theme Studio</strong> is a PS3 theme editor for Windows. It allows creating 2D themes and true dynamic 3D themes with models, motion, and lighting — features Sony's own tools never supported.</p>
+        <ul class="checklist">
+          <li><strong>2D themes</strong>: custom backgrounds, icons, cursors, and menu sounds.</li>
+          <li><strong>3D themes</strong>: models, motion, and lighting.</li>
+          <li><strong>PSJS script</strong>: write scene motion in Sony's script language.</li>
+          <li><strong>Live preview</strong>: script is played back as you type.</li>
+          <li><strong>Export</strong>: one click to build the <code>.p3t</code> file or deploy to the console over the network.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">Theme Studio — Releases</a></p>
+
+        <h3 class="sub-title">🖼️ RCO Studio — XMB Resource Editor</h3>
+        <p><strong>RCO Studio</strong> is a modern tool for editing PS3 XMB resource files (RCOs). It replaces the old RCOmage workflow.</p>
+        <ul class="checklist">
+          <li><strong>Drag and drop</strong>: no typing paths or naming files.</li>
+          <li><strong>FTP deploy</strong>: upload compiled RCOs to <code>dev_blind</code>.</li>
+          <li><strong>Undo</strong>: right-click to undo all changes in an RCO at once.</li>
+          <li><strong>Properties panel</strong>: shows details of the selected file.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">RCO Studio — Releases</a></p>
+
+        <h3 class="sub-title">🖌️ Patch Studio — Texture Replacement</h3>
+        <p><strong>Patch Studio</strong> is a PC tool that allows replacing any texture in any PS3 game, with no game-specific work needed.</p>
+        <ul class="checklist">
+          <li><strong>Dump</strong>: on the cheat menu's Patches tab, Square dumps the running game's textures.</li>
+          <li><strong>Edit</strong>: Patch Studio downloads the dumps, turns them into editable images.</li>
+          <li><strong>Apply</strong>: sends the patch back to the console and applies it in-game.</li>
+        </ul>
+        <p><strong>Link</strong>: <a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener">Patch Studio — Releases</a></p>
+      </div>
+    </section>
+
+    <!-- DEPANNAGE -->
+    <section id="depannage" class="section">
+      <header class="section-head">
+        <span class="section-tag">07</span>
+        <h2 class="section-title">Troubleshooting</h2>
+      </header>
+      <div class="section-body">
+        <h3 class="sub-title">Common Issues</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Issue</th><th>Likely Cause</th><th>Solution</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>App won't launch</td>
+                <td>HEN not enabled (on PS3HEN).</td>
+                <td>Enable HEN before launching the app.</td>
+              </tr>
+              <tr>
+                <td>Cell Stream: high latency</td>
+                <td>Unstable Wi-Fi connection.</td>
+                <td>Use a wired connection (Ethernet) between PC and PS3.</td>
+              </tr>
+              <tr>
+                <td>Yo! Player: videos stuck at 1 minute</td>
+                <td>Google changed its API.</td>
+                <td>Update Yo! Player to the latest version (Apple Vision Pro client is not capped).</td>
+              </tr>
+              <tr>
+                <td>Simple Disc Mount: ISO not listed</td>
+                <td>ISO is not in the correct folder.</td>
+                <td>Place your ISOs in <code>/dev_hdd0/PS3ISO/</code>.</td>
+              </tr>
+              <tr>
+                <td>Simple Cheat Menu: cheats not found</td>
+                <td>Missing Artemis database or unsupported game.</td>
+                <td>Check that the game is in the Artemis database.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESSOURCES -->
+    <section id="ressources" class="section">
+      <header class="section-head">
+        <span class="section-tag">08</span>
+        <h2 class="section-title">Useful Resources</h2>
+      </header>
+      <div class="section-body">
+        <ul class="resource-list">
+          <li><a href="https://github.com/mohasi/ps3-dev/releases" target="_blank" rel="noopener"><strong>mohasi/ps3-dev GitHub</strong>: All tool releases</a></li>
+          <li><a href="https://github.com/mohasi/ps3-dev" target="_blank" rel="noopener"><strong>Source code</strong>: Full GitHub repository</a></li>
+          <li><a href="https://codeberg.org/mohasi/ps3-dev/releases" target="_blank" rel="noopener"><strong>Codeberg</strong>: Releases mirror</a></li>
+          <li><a href="https://www.psx-place.com/threads/ps3-cell-stream-pc-to-ps3-streaming.47150/" target="_blank" rel="noopener"><strong>PSX-Place — Cell Stream</strong>: Official thread</a></li>
+          <li><a href="https://www.psx-place.com/threads/ps3-file-manager.47200/" target="_blank" rel="noopener"><strong>PSX-Place — File Manager</strong>: Official thread</a></li>
+          <li><a href="https://www.psx-place.com/threads/ps3-yo-player-native-youtube-client.47100/" target="_blank" rel="noopener"><strong>PSX-Place — Yo! Player</strong>: Official thread</a></li>
+        </ul>
+
+        <p class="footer-note"><em>Guide created for the PS3 OFW/CFW community. Have fun! By LvSs7...et vous...</em></p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>PS3 Dev Tools Guide — Community document.</p>
+      <a href="#top" class="back-to-top">Back to top ↑</a>
+    </footer>
+  </main>
+
+  <button id="scrollTop" class="scroll-top" aria-label="Scroll back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
